@@ -107,4 +107,4 @@ create table PaperBack(
     printLength int
 ) inherits (Type);
 
-drop schema amazon_book_store;
+
