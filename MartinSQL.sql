@@ -15,9 +15,9 @@ values ('Franta', 'Uzasny', 'The3rd', 'Prague', '18400', 'Czech Republic', 'Bole
 insert into Category(name, parentCategoryId)
 values ('Black Authors', null);
 
-insert into genre(id, name)
-values (1, 'Fairytale'),
-       (2, 'Poem');
+insert into genre( name)
+values ( 'Fairytale'),
+       ( 'Poem');
 
 insert into author(firstname, lastname, middlename)
 values ('Dav', 'Pilkey', null),
