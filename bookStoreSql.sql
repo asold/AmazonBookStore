@@ -172,6 +172,12 @@ values('0241512425', 3 );
 insert into BookGenre(bookId, genreId)
 values('0241512425', 1 );
 
+insert into type(bookId, publisher, publishDate, price, condition)
+values('0241512425', 'Viking', '2022-09-15', 5.20, 'Used');
+
+insert into HardCover(id, availableCopies, printLength)
+values(10, 32, 432);
+
 -- insert into AudioCD(bookId)
 -- values ('0241512425');
 --
@@ -183,12 +189,12 @@ values('0241512425', 1 );
 --
 -- insert into paperback(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
 -- values('Penguin', '0241512425', '2022-09-15', '8.79', 'New', 1, 400);
-
-insert into Customer(firstName, lastName, middleName, city, zipCode, country, street, streetNumber)
-values('Andrei', 'soldan', null,'Horsens', '8700', 'Denmark', 'Kamtjatka', 10);
+--
+-- insert into Customer(firstName, lastName, middleName, city, zipCode, country, street, streetNumber)
+-- values('Andrei', 'soldan', null,'Horsens', '8700', 'Denmark', 'Kamtjatka', 10);
 
 insert into CustomerOrder(typeId, customerId, date, totalPrice)
-values( 9, 1, '2023-02-13', '5.20');
+values( 10, 1, '2023-02-13', '5.20');
 
 
 select * from type
