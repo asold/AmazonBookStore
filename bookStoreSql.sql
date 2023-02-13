@@ -69,12 +69,11 @@ create table Category(
     name varchar(30),
     parentCategoryId int references Category(id)
 );
-
+-- drop table bookcategory;
 create table BookCategory(
     bookId varchar(20) references Book(ISBN),
-    genreId int references Category(id)
+    categoryId int references Category(id)
 );
-
 create table BookGenre(
     bookId varchar(20) references Book(ISBN),
     genreId int references Genre(id)
@@ -84,38 +83,53 @@ create table BookGenre(
 drop  table Type cascade;
 create table Type(
     id serial primary key ,
-    bookId varchar(20) ,
+    bookId varchar(20),
     publisher varchar(50),
     publishDate date,
     price numeric(6,2),
     condition varchar(20),
+
     foreign key (bookId) references Book(ISBN)
 
 );
-
+-- drop table AudioBook;
 create table AudioBook(
+    id int  primary key  references Type(id),
     listeningTimeMinutes numeric(7,2),
     narrator varchar(50)
-) inherits (Type);
+) ;
+
+-- drop table AudioCD;
 
 create table AudioCD(
+    id int  primary key  references Type(id),
+
     availableCopies int
-) inherits (Type);
+) ;
+
+drop table Kindle;
 
 create table Kindle(
+    id int  primary key  references Type(id),
     fileSize numeric(6,2),
     printLength int
-) inherits (Type);
+) ;
+
+-- drop table HardCover;
 
 create table HardCover(
+    id int  primary key  references Type(id),
     availableCopies int,
     printLength int
-) inherits (Type);
+) ;
+
+-- drop table PaperBack;
 
 create table PaperBack(
+    id int  primary key  references Type(id),
     availableCopies int,
     printLength int
-) inherits (Type);
+);
 
 
 
@@ -149,22 +163,38 @@ insert into Genre(name)
 values('Rural Life Humor');
 
 insert into BookCategory(bookId, categoryId)
-values('0241512425', 2, 1);
+values('0241512425', 2 );
+insert into BookCategory(bookId, categoryId)
+values('0241512425', 1 );
+insert into BookCategory(bookId, categoryId)
+values('0241512425', 3 );
 
-insert into HardCover(publisher, bookId,publishDate, price, condition, availableCopies, printLength)
-values('Viking', '0241512425', '2022-09-15', '5.20', 'Used', 32, 432);
+insert into BookGenre(bookId, genreId)
+values('0241512425', 1 );
 
-insert into HardCover(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
-values('Viking', '0241512425', '2022-09-15', '10.00', 'New', 23, 432);
+insert into type(bookId, publisher, publishDate, price, condition)
+values('0241512425', 'Viking', '2022-09-15', 5.20, 'Used');
 
-insert into paperback(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
-values('Penguin', '0241512425', '2022-09-15', '8.79', 'New', 1, 400);
+insert into HardCover(id, availableCopies, printLength)
+values(10, 32, 432);
 
-insert into Customer(firstName, lastName, middleName, city, zipCode, country, street, streetNumber)
-values('Andrei', 'soldan', null,'Horsens', '8700', 'Denmark', 'Kamtjatka', 10);
+-- insert into AudioCD(bookId)
+-- values ('0241512425');
+--
+-- insert into HardCover( , availableCopies, printLength)
+-- values('Viking', '0241512425', '2022-09-15', '5.20', 'Used', 32, 432);
+--
+-- insert into HardCover(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
+-- values('Viking', '0241512425', '2022-09-15', '10.00', 'New', 23, 432);
+--
+-- insert into paperback(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
+-- values('Penguin', '0241512425', '2022-09-15', '8.79', 'New', 1, 400);
+--
+-- insert into Customer(firstName, lastName, middleName, city, zipCode, country, street, streetNumber)
+-- values('Andrei', 'soldan', null,'Horsens', '8700', 'Denmark', 'Kamtjatka', 10);
 
 insert into CustomerOrder(typeId, customerId, date, totalPrice)
-values( 3, 1, '2023-02-13', '5.20');
+values( 10, 1, '2023-02-13', '5.20');
 
 
 select * from type
