@@ -72,9 +72,8 @@ create table Category(
 
 create table BookCategory(
     bookId varchar(20) references Book(ISBN),
-    genreId int references Category(id)
+    categoryId int references Category(id)
 );
-
 create table BookGenre(
     bookId varchar(20) references Book(ISBN),
     genreId int references Genre(id)
@@ -148,7 +147,7 @@ values('Thrillers', 2);
 insert into Genre(name)
 values('Rural Life Humor');
 
-insert into BookCategory(bookId, categoryId)
+insert into BookCategory(bookId, genreId)
 values('0241512425', 2, 1);
 
 insert into HardCover(publisher, bookId,publishDate, price, condition, availableCopies, printLength)
