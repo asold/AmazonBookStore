@@ -1,5 +1,6 @@
 set search_path = amazon_book_store;
 
+
 create table Book(
     ISBN varchar(20) PRIMARY KEY,
     title varchar(100) not null ,
@@ -7,6 +8,8 @@ create table Book(
     rating numeric(2, 1),
     language varchar(20)
 );
+
+-- alter table Book alter column title type varchar(100);
 
 create table Author(
     id serial PRIMARY KEY,
@@ -45,8 +48,9 @@ create table Customer(
     zipCode varchar(10),
     country  varchar(30),
     street varchar (50),
-    streetNumber int
+    streetNumber varchar(15)
 );
+alter table customer alter column streetNumber type varchar(15);
 -- drop table CustomerOrder;
 
 create table CustomerOrder(
@@ -130,6 +134,19 @@ create table PaperBack(
     availableCopies int,
     printLength int
 );
+
+create table ItemOrder(
+    id serial primary key ,
+    orderDate date,
+    totalprice numeric(10,2),
+    customerId int,
+    foreign key (customerId) references Customer(id)
+);
+
+create table ItemOrderType(
+    typeId int references Type(id),
+    orderId int references ItemOrder(id)
+)
 
 
 
