@@ -47,10 +47,11 @@ create table Customer(
     street varchar (50),
     streetNumber int
 );
+-- drop table CustomerOrder;
 
 create table CustomerOrder(
     id serial primary key,
-    bookId varchar(20) references Book(ISBN),
+    typeId int references Type(id),
     customerId int references Customer(id),
     date date,
     totalPrice numeric(8,2)
@@ -74,6 +75,8 @@ create table BookGenreCategory(
     categoryId int references Category(id),
     genreId int references Genre(id)
 );
+
+
 drop  table Type cascade;
 create table Type(
     id serial primary key ,
@@ -149,6 +152,12 @@ values('Viking', '0241512425', '2022-09-15', '5.20', 'Used', 32, 432);
 
 insert into HardCover(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
 values('Viking', '0241512425', '2022-09-15', '10.00', 'New', 23, 432);
+
+insert into Customer(firstName, lastName, middleName, city, zipCode, country, street, streetNumber)
+values('Andrei', 'soldan', null,'Horsens', '8700', 'Denmark', 'Kamtjatka', 10)
+
+insert into CustomerOrder(bookId, customerId, date, totalPrice)
+values ('0241512425',  1, '2023-02-13', '')
 
 
 
