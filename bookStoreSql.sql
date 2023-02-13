@@ -107,4 +107,47 @@ create table PaperBack(
     printLength int
 ) inherits (Type);
 
+create table BookType(
+    bookId varchar(20) references book(ISBN),
+    typeId int references type(id)
+);
 
+-- Insert statements
+insert into Book( ISBN ,
+    title ,
+    description,
+    rating ,
+    language )
+values ('0241512425', 'The Bullet That Missed', 'THE THIRD NOVEL IN THE RECORD-BREAKING, MILLION-COPY BESTSELLING THURSDAY MURDER CLUB SERIES BY RICHARD OSMAN',4.7, 'English');
+
+insert into Author(
+    firstName ,
+    lastname ,
+    middleName )
+values ('Richard', 'Osman', '');
+
+insert into Character(name)
+values('Elizabeth Best');
+
+insert into category(name)
+values('fiction');
+
+insert into category(name, parentCategoryId)
+values('Crime, thrillers & mystery', 1);
+
+insert into category(name, parentCategoryId)
+values('Thrillers', 2);
+
+insert into Genre(name)
+values('Rural Life Humor');
+
+insert into BookGenreCategory(bookId, categoryId, genreId)
+values('0241512425', 2, 1);
+
+insert into HardCover(publisher, publishDate, price, condition, availableCopies, printLength)
+values('Viking', '2022-09-15', '5.20', 'Used', 32, 432);
+
+insert into HardCover(publisher, publishDate, price, condition, availableCopies, printLength)
+values('Viking', '2022-09-15', '10.00', 'New', 23, 432)
+
+insert into bookty
