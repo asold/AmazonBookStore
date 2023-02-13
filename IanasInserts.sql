@@ -16,9 +16,9 @@ insert into Category(name, parentCategoryId)
 values ('Chidlrens books', null),
        ('From 6 to 8 years', 2);
 
-insert into genre(id, name)
-values (1, 'Children''s Humorous Comics'),
-       (2, 'Graphic Novels');
+insert into genre( name)
+values ( 'Children''s Humorous Comics'),
+       ( 'Graphic Novels');
 
 insert into author(firstname, lastname, middlename)
 values ('Dav', 'Pilkey', null),
@@ -28,7 +28,7 @@ values ('Dav', 'Pilkey', null),
        ('Adam', 'Rubin', null),
        ('Rick', 'Riordan', null);
 
-insert into authorbooks(bookid, authorid, dateposted)
+insert into AuthorBooks(bookid, authorid, datePosted)
 values ('9781338801910', 1, '2018-12-12'),
        ('9780385376716', 2, '2019-07-19'),
        ('9780593486924', 3, '2021-02-28'),
@@ -47,7 +47,7 @@ values ('9781338801910', 3),
        ('9788498385489', 1),
        ('9780147515599', 4);
 
-insert into bookcategory(bookid, genreid)
+insert into bookcategory(bookid, categoryid)
 values ('9780147515599', 4),
        ('9780385376716', 4),
        ('9780593486924', 4),
