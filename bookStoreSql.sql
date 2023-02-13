@@ -14,7 +14,7 @@ create table Author(
     lastname varchar(50) not null,
     middleName varchar(50)
 );
-
+-- drop table AuthorBooks;
 create table AuthorBooks(
     bookId varchar(20),
     authorId int,
@@ -133,69 +133,4 @@ create table PaperBack(
 
 
 
--- Insert statements
-insert into Book( ISBN ,
-    title ,
-    description,
-    rating ,
-    language )
-values ('0241512425', 'The Bullet That Missed', 'THE THIRD NOVEL IN THE RECORD-BREAKING, MILLION-COPY BESTSELLING THURSDAY MURDER CLUB SERIES BY RICHARD OSMAN',4.7, 'English');
 
-insert into Author(
-    firstName ,
-    lastname ,
-    middleName )
-values ('Richard', 'Osman', '');
-
-insert into Character(name)
-values('Elizabeth Best');
-
-insert into category(name)
-values('fiction');
-
-insert into category(name, parentCategoryId)
-values('Crime, thrillers & mystery', 1);
-
-insert into category(name, parentCategoryId)
-values('Thrillers', 2);
-
-insert into Genre(name)
-values('Rural Life Humor');
-
-insert into BookCategory(bookId, categoryId)
-values('0241512425', 2 );
-insert into BookCategory(bookId, categoryId)
-values('0241512425', 1 );
-insert into BookCategory(bookId, categoryId)
-values('0241512425', 3 );
-
-insert into BookGenre(bookId, genreId)
-values('0241512425', 1 );
-
-insert into type(bookId, publisher, publishDate, price, condition)
-values('0241512425', 'Viking', '2022-09-15', 5.20, 'Used');
-
-insert into HardCover(id, availableCopies, printLength)
-values(10, 32, 432);
-
--- insert into AudioCD(bookId)
--- values ('0241512425');
---
--- insert into HardCover( , availableCopies, printLength)
--- values('Viking', '0241512425', '2022-09-15', '5.20', 'Used', 32, 432);
---
--- insert into HardCover(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
--- values('Viking', '0241512425', '2022-09-15', '10.00', 'New', 23, 432);
---
--- insert into paperback(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
--- values('Penguin', '0241512425', '2022-09-15', '8.79', 'New', 1, 400);
---
--- insert into Customer(firstName, lastName, middleName, city, zipCode, country, street, streetNumber)
--- values('Andrei', 'soldan', null,'Horsens', '8700', 'Denmark', 'Kamtjatka', 10);
-
-insert into CustomerOrder(typeId, customerId, date, totalPrice)
-values( 10, 1, '2023-02-13', '5.20');
-
-
-select * from type
-where id = 2
