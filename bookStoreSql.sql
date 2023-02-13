@@ -74,13 +74,16 @@ create table BookGenreCategory(
     categoryId int references Category(id),
     genreId int references Genre(id)
 );
-
+drop  table Type cascade;
 create table Type(
     id serial primary key ,
+    bookId varchar(20) ,
     publisher varchar(50),
     publishDate date,
     price numeric(6,2),
-    condition varchar(20)
+    condition varchar(20),
+    foreign key (bookId) references Book(ISBN)
+
 );
 
 create table AudioBook(
@@ -107,10 +110,7 @@ create table PaperBack(
     printLength int
 ) inherits (Type);
 
-create table BookType(
-    bookId varchar(20) references book(ISBN),
-    typeId int references type(id)
-);
+
 
 -- Insert statements
 insert into Book( ISBN ,
@@ -144,10 +144,13 @@ values('Rural Life Humor');
 insert into BookGenreCategory(bookId, categoryId, genreId)
 values('0241512425', 2, 1);
 
-insert into HardCover(publisher, publishDate, price, condition, availableCopies, printLength)
-values('Viking', '2022-09-15', '5.20', 'Used', 32, 432);
+insert into HardCover(publisher, bookId,publishDate, price, condition, availableCopies, printLength)
+values('Viking', '0241512425', '2022-09-15', '5.20', 'Used', 32, 432);
 
-insert into HardCover(publisher, publishDate, price, condition, availableCopies, printLength)
-values('Viking', '2022-09-15', '10.00', 'New', 23, 432)
+insert into HardCover(publisher,bookId, publishDate, price, condition, availableCopies, printLength)
+values('Viking', '0241512425', '2022-09-15', '10.00', 'New', 23, 432);
 
-insert into bookty
+
+
+select * from type
+where id = 2
