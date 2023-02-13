@@ -36,3 +36,17 @@ values ('9781338801910', 1, '2018-12-12'),
        ('9788498385489', 5, '2006-03-18'),
        ('9780147515599', 6, '2021-02-28');
 
+insert into character(name)
+values ('Percy'),
+       ('Monkey'),
+       ('Dog Man');
+
+insert into bookcharacters(bookid, characterid)
+values ('9781338801910',3),
+       ('9780593486924',2),
+       ('9788498385489',1),
+       ('9780147515599',4);
+
+insert into bookcategory(bookid, genreid)
+values ('9780147515599',)
+
