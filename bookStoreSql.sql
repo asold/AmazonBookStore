@@ -51,6 +51,21 @@ create table Customer(
     streetNumber varchar(15)
 );
 alter table customer alter column streetNumber type varchar(15);
+
+
+-- drop  table Type cascade;
+create table Type(
+    id serial primary key ,
+    bookId varchar(20),
+    publisher varchar(50),
+    publishDate date,
+    price numeric(6,2),
+    condition varchar(20),
+
+    foreign key (bookId) references Book(ISBN)
+
+);
+
 -- drop table CustomerOrder;
 
 create table CustomerOrder(
@@ -83,19 +98,6 @@ create table BookGenre(
     genreId int references Genre(id)
 );
 
-
-drop  table Type cascade;
-create table Type(
-    id serial primary key ,
-    bookId varchar(20),
-    publisher varchar(50),
-    publishDate date,
-    price numeric(6,2),
-    condition varchar(20),
-
-    foreign key (bookId) references Book(ISBN)
-
-);
 -- drop table AudioBook;
 create table AudioBook(
     id int  primary key  references Type(id),
@@ -111,7 +113,7 @@ create table AudioCD(
     availableCopies int
 ) ;
 
-drop table Kindle;
+-- drop table Kindle;
 
 create table Kindle(
     id int  primary key  references Type(id),
