@@ -68,10 +68,10 @@ language plpgsql;
 -- adding orders
 select * from make_order_customer_book( '0241512425', create_order_for_customer(5));
 -- using 44 here because we know what order was created
-select * from make_order_customer_book( '0241512425', 44);
-select * from make_order_customer_book( '0241512425', 44);
-select * from make_order_customer_book( '9781338801910', 44);
-select * from make_order_customer_book( '9781338801910', 44);
+select * from make_order_customer_book( '0241512425', 45);
+select * from make_order_customer_book( '0241512425', 45);
+select * from make_order_customer_book( '9781338801910', 45);
+select * from make_order_customer_book( '9781338801910', 45);
 
 
 
@@ -83,7 +83,9 @@ select * from make_order_customer_book( '9781338801910', 44);
 select * from book
 inner join bookcategory b on book.isbn = b.bookid
 join category c on c.id = b.categoryid
-where c.name like '%fiction%'
+where c.name not like '%fiction%' and c.name not like 'Crime, thrillers & mystery'
+-- group by bookid
+
 /*or c.name  like '%thrillers%'*/
 
 
