@@ -53,5 +53,5 @@ values( 10, 1, '2023-02-13', '5.20');
 insert into type(bookId, publisher, publishDate, price, condition)
 values('9781338801910', 'Viking', '2021-09-15', 15.20, 'New');
 
-insert into paperback(id, availableCopies, printLength)
+insert into hardcover(id, availableCopies, printLength)
 values(11, 13, 432);
