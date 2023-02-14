@@ -50,8 +50,6 @@ returns void as $$
             insert into itemordertype(typeid, orderid)
             select typeId, orderId;
 
-
-
     -- here we update the amount of hard cover copies(-1)
     update hardcover
         set availablecopies = availablecopies-1
@@ -63,7 +61,6 @@ returns void as $$
     from itemordertype ot
     join type t on ot.typeid = t.id
     where i.id = ot.orderid;
-
         end;
 $$
 language plpgsql;
@@ -83,56 +80,19 @@ select * from make_order_customer_book( '9781338801910', 45);
 -- Exercise 4.4
 -- Books that are categorized as neither science fiction nor fantasy
 
+CREATE TEMP TABLE tbl AS
 select * from book
-inner join bookcategory b on book.isbn = b.bookid
-join category c on c.id = b.categoryid
-where c.name not like '%fiction%' and c.name not like 'Crime, thrillers & mystery'
--- group by bookid
+    where book.isbn not in(
+        select bookcategory.bookid
+        from bookcategory
+        join category c on bookcategory.categoryid = c.id
+        where c.name not in ('fiction', 'fantasy')
+        );
+select * from tbl;
+drop table tbl;
 
 /*or c.name  like '%thrillers%'*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
--- create or replace function make_order_customer_book(customersId integer, bookISBN varchar(20), orderId int )
--- returns void as $$
---     BEGIN
---     -- selling a hardcover copy
---     --      this will return the id of the type of the book that has been sold
---     --      in this example the book is of type hardcover
---     with new_itemOrderType as(
---             insert into itemordertype(typeid, orderid)
---             select (select "get_type_given_book_isbn"('0241512425')), 41
---             from   itemorder, type
---             join hardcover on type.id = hardcover.id
---             returning itemordertype.typeid
---     )
---     -- here we update the amount of hard cover copies(-1)
---     update hardcover
---         set availablecopies = availablecopies-1
---         from new_itemOrderType
---         where hardcover.id =  new_itemOrderType.typeid;
---
---     -- here we update the total price of the item order that has been placed for the customer
---     update itemorder i
---     set totalprice = totalprice + t.price
---     from itemordertype ot
---     join type t on ot.typeid = t.id
---     where i.id = ot.orderid;
---
---         end;
--- $$
--- language plpgsql;
 
 
 
