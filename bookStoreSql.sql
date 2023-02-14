@@ -149,7 +149,7 @@ create table ItemOrder(
     foreign key (customerId) references Customer(id)
 );
 
-drop table ItemOrderType;
+-- drop table ItemOrderType;
 create table ItemOrderType(
     typeId int references Type(id),
     orderId int references ItemOrder(id)

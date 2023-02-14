@@ -20,7 +20,8 @@ VALUES ('0593135202', (SELECT id from category where name = 'Space opera')),
 
 --  Retire "Space opera" and moving books from "Space opera" category to parent category
 UPDATE bookcategory
-SET categoryid = (SELECT categoryid FROM category WHERE name = 'Science Fiction and Fantasy');
+SET categoryid = (SELECT id FROM category WHERE name = 'Science Fiction and Fantasy')
+WHERE categoryid = (SELECT id FROM category WHERE name = 'Space opera');
 
 DELETE FROM category
 WHERE name = 'Space opera';
