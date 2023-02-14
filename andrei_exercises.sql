@@ -50,8 +50,6 @@ returns void as $$
             insert into itemordertype(typeid, orderid)
             select typeId, orderId;
 
-
-
     -- here we update the amount of hard cover copies(-1)
     update hardcover
         set availablecopies = availablecopies-1
@@ -63,7 +61,6 @@ returns void as $$
     from itemordertype ot
     join type t on ot.typeid = t.id
     where i.id = ot.orderid;
-
         end;
 $$
 language plpgsql;
