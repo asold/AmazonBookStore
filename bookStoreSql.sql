@@ -84,6 +84,9 @@ create table BookGenre(
 );
 
 
+--I suggest to put 'condition' inside those book types that have condition 'Hardcover', 'Paperback'
+-- cause Audio and others don't have condition
+-- Also price is different for all types so 'price' should be included in different book types
 drop  table Type cascade;
 create table Type(
     id serial primary key ,
@@ -113,6 +116,8 @@ create table AudioCD(
 
 drop table Kindle;
 
+--The file size on the web site is indicated in KB too big of a number for the type that we put there
+--Should we change it or leave it as is?
 create table Kindle(
     id int  primary key  references Type(id),
     fileSize numeric(6,2),
