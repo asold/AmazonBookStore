@@ -93,8 +93,7 @@ values ('2023-02-14',13.8,2),
        ('2023-02-13',17.25,1),
        ('2023-02-12',13.92,3);
 
-insert in1.09+12.71
-    to itemordertype(typeid, orderid)
+insert into itemordertype(typeid, orderid)
 values (1,1),
        (6,1),
        (10,2),
