@@ -51,6 +51,24 @@ create table Customer(
     streetNumber varchar(15)
 );
 alter table customer alter column streetNumber type varchar(15);
+
+
+-- drop  table Type cascade;
+--I suggest to put 'condition' inside those book types that have condition 'Hardcover', 'Paperback'
+-- cause Audio and others don't have condition
+-- Also price is different for all types so 'price' should be included in different book types
+create table Type(
+    id serial primary key ,
+    bookId varchar(20),
+    publisher varchar(50),
+    publishDate date,
+    price numeric(6,2),
+    condition varchar(20),
+
+    foreign key (bookId) references Book(ISBN)
+
+);
+
 -- drop table CustomerOrder;
 
 create table CustomerOrder(
@@ -84,21 +102,6 @@ create table BookGenre(
 );
 
 
---I suggest to put 'condition' inside those book types that have condition 'Hardcover', 'Paperback'
--- cause Audio and others don't have condition
--- Also price is different for all types so 'price' should be included in different book types
-drop  table Type cascade;
-create table Type(
-    id serial primary key ,
-    bookId varchar(20),
-    publisher varchar(50),
-    publishDate date,
-    price numeric(6,2),
-    condition varchar(20),
-
-    foreign key (bookId) references Book(ISBN)
-
-);
 -- drop table AudioBook;
 create table AudioBook(
     id int  primary key  references Type(id),
@@ -114,7 +117,7 @@ create table AudioCD(
     availableCopies int
 ) ;
 
-drop table Kindle;
+-- drop table Kindle;
 
 --The file size on the web site is indicated in KB too big of a number for the type that we put there
 --Should we change it or leave it as is?

@@ -20,18 +20,18 @@ values ( 'Fairytale'),
        ( 'Poem');
 
 insert into author(firstname, lastname, middlename)
-values ('Dav', 'Pilkey', null),
-       ('Emily', 'Martin', 'Winfield'),
-       ('Suzanne', 'Lang', null),
-       ('Max', 'Lang', null),
-       ('Adam', 'Rubin', null),
-       ('Rick', 'Riordan', null);
+values ('Roberto', 'German', null),
+       ('Khadeen', 'Ellis', null),
+       ('Devale', 'Ellis', null),
+       ('Chris', 'Paul', null),
+       ('David', 'Goggins', null),
+       ('Stehpen', 'Smith', 'Anthony');
 
 insert into authorbooks(bookid, authorid, dateposted)
-values ('9781338801910', 1, '2018-12-12'),
-       ('9780385376716', 2, '2019-07-19'),
-       ('9780593486924', 3, '2021-02-28'),
-       ('9780593486924', 4, '2021-02-28'),
-       ('9788498385489', 5, '2006-03-18'),
-       ('9780147515599', 6, '2021-02-28');
+values ('979-8987207215', 1, '2023-01-31'),
+       ('0-6312-7348-4', 2, '2023-02-07'),
+       ('0-6312-7348-4', 3, '2023-02-07'),
+       ('978-1250810038', 4, '2023-01-10'),
+       ('0-2043-4052-7', 5, '2022-12-06'),
+       ('0-9546-5295-9', 6, '2023-01-17');
 
