@@ -11,16 +11,16 @@ INSERT INTO author(firstname, lastname, middlename)
 VALUES ('Lloyd', 'Richards', 'Devereux');
 
 INSERT INTO authorbooks(bookid, authorid, dateposted)
-VALUES ('1911687700', 1, '6.6.2023'),
-       ('161218605X', 2, '6.12.2012');
+VALUES ('1911687700', (Select id from author where firstname = 'Dan' and lastname = 'White'), '6.6.2023'),
+       ('161218605X', (Select id from author where firstname = 'Lloyd' and lastname = 'Richards' and middlename = 'Devereux'), '6.12.2012');
 
 INSERT INTO character(name)
 VALUES ('Dan White'),
        ('Christine Prusik');
 
 INSERT INTO bookcharacters(bookid, characterid)
-VALUES ('1911687700', 1),
-       ('161218605X', 2);
+VALUES ('1911687700', (Select id from character where name = 'Dan White')),
+       ('161218605X', (Select id from character where name = 'Christine Prusik'));
 
 INSERT INTO genre(name)
 VALUES ('Education'),
@@ -30,11 +30,11 @@ INSERT INTO category(name)
 VALUES ('Business & Careers');
 
 INSERT INTO category(name, parentcategoryid)
-VALUES ('Sales & Marketing', 1);
+VALUES ('Sales & Marketing', (Select id from category where name = 'Business & Careers'));
 
 INSERT INTO bookcategory(bookid, categoryid)
-VALUES ('1911687700', 1),
-       ('1911687700', 2);
+VALUES ('1911687700', (Select id from category where name = 'Business & Careers')),
+       ('1911687700', (Select id from category where name = 'Sales & Marketing'));
 
 INSERT INTO type(bookid, publisher, publishdate)
 VALUES ('1911687700', 'Lid Publishing', '6.6.2023'),
@@ -45,21 +45,21 @@ INSERT INTO type(bookid, publisher, publishdate, price, condition)
 VALUES ('161218605X', 'Thomas & Mercer', '6.11.2012', 9 ,'new'),
        ('161218605X', 'Brilliance Audio', '6.11.2012', 17.99, 'new');
 
-INSERT INTO hardcover(id, printlength)
-VALUES (1, 168);
-
 INSERT INTO type(bookid, publishdate, price)
 values ('1911687700', '19.1.2023', 7.93);
 
+INSERT INTO hardcover(id, printlength)
+VALUES ((Select id from type where bookid = '1911687700' and publisher = 'Lid Publishing' and publishdate = '6.6.2023' and price IS NULL and condition IS NULL), 168);
+
 INSERT INTO kindle(id, filesize, printlength)
-VALUES (2, 5888, 182),
-       (3, 558, 343);
+VALUES ((Select id from type where bookid = '161218605X' and publisher = 'Thomas & Mercer' and publishdate = '6.11.2012' and price IS NULL and condition IS NULL), 5888, 182),
+       ((Select id from type where bookid = '161218605X' and publisher = 'Brilliance Audio' and publishdate = '10.11.2012' and price IS NULL and condition IS NULL), 558, 343);
 
 INSERT INTO audiobook(id, listeningtimeminutes, narrator)
-VALUES (4, 611, 'Donna Postel');
+VALUES ((Select id from type where bookid = '161218605X' and publisher = 'Thomas & Mercer' and publishdate = '6.11.2012' and price = 9 and  condition = 'new'), 611, 'Donna Postel');
 
 INSERT INTO paperback(id, availablecopies, printlength)
-VALUES (5, 2, 324);
+VALUES ((Select id from type where bookid = '161218605X' and publisher = 'Brilliance Audio' and publishdate = '6.11.2012' and price = 17.99 and  condition = 'new'), 2, 324);
 
 INSERT INTO audiobook(id)
-VALUES (6);
+VALUES ((Select id from type where bookid = '1911687700' and publisher IS NULL and publishdate = '19.1.2023' and price = 7.93 and condition IS NULL));
