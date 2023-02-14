@@ -119,11 +119,9 @@ create table AudioCD(
 
 -- drop table Kindle;
 
---The file size on the web site is indicated in KB too big of a number for the type that we put there
---Should we change it or leave it as is?
 create table Kindle(
     id int  primary key  references Type(id),
-    fileSize numeric(6,2),
+    fileSize varchar(15),
     printLength int
 ) ;
 
