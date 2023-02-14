@@ -54,6 +54,9 @@ alter table customer alter column streetNumber type varchar(15);
 
 
 -- drop  table Type cascade;
+--I suggest to put 'condition' inside those book types that have condition 'Hardcover', 'Paperback'
+-- cause Audio and others don't have condition
+-- Also price is different for all types so 'price' should be included in different book types
 create table Type(
     id serial primary key ,
     bookId varchar(20),
@@ -98,6 +101,7 @@ create table BookGenre(
     genreId int references Genre(id)
 );
 
+
 -- drop table AudioBook;
 create table AudioBook(
     id int  primary key  references Type(id),
@@ -117,7 +121,7 @@ create table AudioCD(
 
 create table Kindle(
     id int  primary key  references Type(id),
-    fileSize numeric(6,2),
+    fileSize varchar(15),
     printLength int
 ) ;
 
@@ -145,9 +149,11 @@ create table ItemOrder(
     foreign key (customerId) references Customer(id)
 );
 
+drop table ItemOrderType;
 create table ItemOrderType(
     typeId int references Type(id),
     orderId int references ItemOrder(id)
+--     primary key (typeId, orderId)
 )
 
 
