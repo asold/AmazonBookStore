@@ -93,6 +93,38 @@ drop table tbl;
 
 /*or c.name  like '%thrillers%'*/
 
+-- Querying data
+-- Exercise 4.5
+-- Average page count by genre
 
+-- create temp table
+-- with averages of page length by each type(kindle, paperback, hardcover)
+-- grouped by id of type they are related to
+create temp table AvgByTypeId as
+SELECT
+  AVG(printlength) as average, id AS avg_column1
+FROM (
+  SELECT printlength, id FROM kindle
+  UNION ALL
+  SELECT printlength , id FROM paperback
+  UNION ALL
+  SELECT printlength, id FROM hardcover
 
+) combined_data
+group by id;
+select * from AvgByTypeId;
+-- -----------------------------------------------------------
+-- adding the bookid column to pre previous table
+create temp table AvgPerBook as
+select * from AvgByTypeId
+    inner join type on AvgByTypeId.avg_column1 = type.id;
 
+drop table AvgByTypeId;
+
+-- joining genre, bookgenre and AvgPerBook based on bookId
+select AvgPerBook.average, genre.name
+    from  AvgPerBook
+    inner join bookgenre  on bookgenre.bookid = AvgPerBook.bookid
+    inner join genre on bookgenre.genreid = genre.id;
+
+drop table AvgPerBook;
