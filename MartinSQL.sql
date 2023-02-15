@@ -44,7 +44,6 @@ values ('978-1250810038', 1);
 
 
 insert into bookcategory(bookid, categoryid)
-
 values ('979-8987207215', 1),
        ('0-6312-7348-4', 1),
        ('978-1250810038', 1),
@@ -52,23 +51,23 @@ values ('979-8987207215', 1),
        ('0-9546-5295-9', 1);
 
 insert into bookgenre(bookid, genreid)
-values ('979-8987207215', 1),
-       ('0-6312-7348-4', 2),
-       ('978-1250810038', 2),
-       ('0-2043-4052-7', 2),
-       ('0-9546-5295-9', 1);
+values ('979-8987207215', 5),
+       ('0-6312-7348-4', 5),
+       ('978-1250810038', 5),
+       ('0-2043-4052-7', 3),
+       ('0-9546-5295-9', 3);
 
 insert into type(bookid, publisher, publishdate, price, condition)
-values ('979-8987207215', 'Blue Ink Tears: A Collection of Poems', '2023-01-31', 1.09, null),
-       ('979-8987207215', 'Blue Ink Tears: A Collection of Poems', '2023-01-31', 14.23, 'New'),
-       ('0-6312-7348-4', 'We Over Me: The Counterintuitive Approach to Getting Everything You Want from Your Relationship', '2023-02-07', 15.39, null),
-       ('0-6312-7348-4', 'We Over Me: The Counterintuitive Approach to Getting Everything You Want from Your Relationship', '2023-02-07', 17.95, 'New'),
-       ('0-6312-7348-4', 'We Over Me: The Counterintuitive Approach to Getting Everything You Want from Your Relationship', '2023-02-07', 16.99, 'Used'),
-       ('978-1250810038', 'Basketball Dreams', '2023-01-10', 13.92, null),
-       ('978-1250810038', 'Basketball Dreams', '2023-01-10', 13.92, 'New'),
-       ('978-1250810038', 'Basketball Dreams', '2023-01-10', 12.71, 'Used'),
-       ('0-2043-4052-7', 'Never Finished: Unshackle Your Mind and Win the War Within', '2022-12-06', 10.44, null),
-       ('0-9546-5295-9', 'Straight Shooter: A Memoir of Second Chances and First Takes', '2023-01-17', 17.25, 'New');
+values ('979-8987207215', 'Bowker', '2023-01-31', 1.09, null),
+       ('979-8987207215', 'Bowker', '2023-01-31', 14.23, 'New'),
+       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 15.39, null),
+       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 17.95, 'New'),
+       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 16.99, 'Used'),
+       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 13.92, null),
+       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 13.92, 'New'),
+       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 12.71, 'Used'),
+       ('0-2043-4052-7', 'Nakej Franta', '2022-12-06', 10.44, null),
+       ('0-9546-5295-9', 'Gallery/13A', '2023-01-17', 17.25, 'New');
 
 
 insert into hardcover(id, availablecopies, printlength)
