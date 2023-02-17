@@ -128,3 +128,13 @@ select AvgPerBook.average, genre.name
     inner join genre on bookgenre.genreid = genre.id;
 
 drop table AvgPerBook;
+
+
+-- Querying data
+-- Exercise 4.6
+-- Categories that have no sub-categories
+
+select cat1.id, cat1.name, cat1.parentcategoryid
+from category cat1
+left join category cat2 on cat1.id = cat2.parentcategoryid
+where cat2.id is null
