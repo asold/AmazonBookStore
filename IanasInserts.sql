@@ -81,8 +81,8 @@ values (6,170,'Adam Rubin'),
        (1, 97.1, 'Ari Meyers');
 
 insert into kindle(id, filesize, printlength)
-values (2,1911,40),
-       (3,2067,130);
+values (10,1911,40),
+       (11,2067,130);
 
 insert into paperback(id, availablecopies, printlength)
 values (5,5,1840);
