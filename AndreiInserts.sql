@@ -40,18 +40,18 @@ values('0241512425', 3 );
 insert into BookGenre(bookId, genreId)
 values('0241512425', 1 );
 
-insert into type(bookId, publisher, publishDate, price, condition)
-values('0241512425', 'Viking', '2022-09-15', 5.20, 'Used');
+insert into type(bookId, publisher, publishDate, price)
+values('0241512425', 'Viking', '2022-09-15', 5.20);
 
-insert into HardCover(id, availableCopies, printLength)
-values(10, 32, 432);
+insert into HardCover(id, availableCopies, printLength, condition)
+values(10, 32, 432, 'Used');
 
 insert into CustomerOrder(typeId, customerId, date, totalPrice)
-values( 10, 1, '2023-02-13', '5.20');
+values( 10, 1, '2023-02-13', '5.20')
+;
 
+insert into type(bookId, publisher, publishDate, price)
+values('9781338801910', 'Viking', '2021-09-15', 15.20);
 
-insert into type(bookId, publisher, publishDate, price, condition)
-values('9781338801910', 'Viking', '2021-09-15', 15.20, 'New');
-
-insert into hardcover(id, availableCopies, printLength)
-values(11, 13, 432);
+insert into hardcover(id, availableCopies, printLength, condition)
+values(11, 13, 432, 'New');

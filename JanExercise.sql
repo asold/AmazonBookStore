@@ -73,25 +73,25 @@ SELECT create_order_for_customer((SELECT id from customer where firstname = 'Tan
 SELECT create_order_for_customer((SELECT id from customer where firstname = 'Tanja' and lastname = 'Shriram' and city = 'Holbæk' and zipcode = '4300' and country = 'Denmark' and street = 'Albanivej' and streetnumber = '17'));
 
 INSERT INTO itemordertype(typeid, orderid)
-VALUES (1, 1),
-       (2,1);
+VALUES (10, 45),
+       (11,46);
 
 INSERT INTO itemordertype(typeid, orderid)
-VALUES (3, 2),
-       (4,2),
-       (5,2);
+VALUES (12, 45),
+       (12,45),
+       (10,46);
 
 
 UPDATE itemorder
 SET totalprice = (SELECT SUM(price) sumPrice from type inner join itemordertype i on type.id = i.typeid where orderid = 1)
-WHERE id = 1;
+WHERE id = 45;
 
 UPDATE itemorder
 SET totalprice = (SELECT SUM(price) sumPrice from type inner join itemordertype i on type.id = i.typeid where orderid = 2)
-WHERE id = 2;
+WHERE id = 45;
 
 -- Getting a total price
-SELECT totalprice from itemorder  where id = 1;
+SELECT totalprice from itemorder  where id = 45;
 
 --3. Total sales to a customer
-SELECT SUM(totalprice) from itemorder where customerid = 1;
+SELECT SUM(totalprice) from itemorder where customerid = 46;
