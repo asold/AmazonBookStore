@@ -86,12 +86,11 @@ select * from book
         select bookcategory.bookid
         from bookcategory
         join category c on bookcategory.categoryid = c.id
-        where c.name not in ('fiction', 'fantasy')
+        where c.name not in ('science fiction', 'fantasy')
         );
 select * from tbl;
 drop table tbl;
 
-/*or c.name  like '%thrillers%'*/
 
 -- Querying data
 -- Exercise 4.5
@@ -112,7 +111,6 @@ FROM (
 
 ) combined_data
 group by id;
-select * from AvgByTypeId;
 -- -----------------------------------------------------------
 -- adding the bookid column to pre previous table
 create temp table AvgPerBook as
