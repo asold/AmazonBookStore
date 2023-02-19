@@ -44,21 +44,21 @@ VALUES ('9780945774259', (SELECT id from author where firstname = 'Karel' and la
        ('9780486419268', (SELECT id from author where firstname = 'Karel' and lastname = 'Čapek')),
        ('0486817245', (SELECT id from author where firstname = 'Karel' and lastname = 'Čapek'));
 
-INSERT INTO type(bookid, publisher, publishdate, price, condition)
-VALUES ('9780945774259', 'Faber & Faber, limited', '1.1.1932', 35, 'used'),
-       ('9780486419268', 'Dover Publications', '20.8.2001', 3, 'used'),
-       ('9780486419268', 'Dover Publications', '20.8.2001', 3.11, 'new'),
-       ('0486817245', 'Dover Publications', '13.9.2017', 2.62 ,'used'),
-       ('0486817245', 'Dover Publications', '13.9.2017', 7.57, 'new');
+INSERT INTO type(bookid, publisher, publishdate, price)
+VALUES ('9780945774259', 'Faber & Faber, limited', '1.1.1932', 35),
+       ('9780486419268', 'Dover Publications', '20.8.2001', 3),
+       ('9780486419268', 'Dover Publications', '20.8.2001', 3.11),
+       ('0486817245', 'Dover Publications', '13.9.2017', 2.62 ),
+       ('0486817245', 'Dover Publications', '13.9.2017', 7.57);
 
-INSERT INTO hardcover(id, availablecopies, printlength)
-VALUES ((SELECT id from type where bookid = '9780945774259'), 3, 2);
+INSERT INTO hardcover(id, availablecopies, printlength, condition)
+VALUES ((SELECT id from type where bookid = '9780945774259'), 3, 2, 'used');
 
-INSERT INTO paperback(id, availablecopies, printlength)
-VALUES ((SELECT id from type where bookid = '9780486419268' and condition = 'used'), 14, 64),
-       ((SELECT id from type where bookid = '9780486419268' and condition = 'new'), 5, 64),
-       ((SELECT id from type where bookid = '0486817245' and condition = 'used'), 24, 112),
-       ((SELECT id from type where bookid = '0486817245' and condition = 'new'), 24, 112);
+INSERT INTO paperback(id, availablecopies, printlength ,condition)
+VALUES ((SELECT id from type where bookid = '9780486419268' and price = 3), 14, 64, 'used'),
+       ((SELECT id from type where bookid = '9780486419268' and price = 3.11), 5, 64, 'new'),
+       ((SELECT id from type where bookid = '0486817245' and price = 2.62), 24, 112, 'used'),
+       ((SELECT id from type where bookid = '0486817245' and price = 7.57), 24, 112, 'new');
 
 -- Getting all books for the specific author
 SELECT * FROM book
@@ -73,25 +73,25 @@ SELECT create_order_for_customer((SELECT id from customer where firstname = 'Tan
 SELECT create_order_for_customer((SELECT id from customer where firstname = 'Tanja' and lastname = 'Shriram' and city = 'Holbæk' and zipcode = '4300' and country = 'Denmark' and street = 'Albanivej' and streetnumber = '17'));
 
 INSERT INTO itemordertype(typeid, orderid)
-VALUES (1, 1),
-       (2,1);
+VALUES (10, 45),
+       (11,46);
 
 INSERT INTO itemordertype(typeid, orderid)
-VALUES (3, 2),
-       (4,2),
-       (5,2);
+VALUES (12, 45),
+       (12,45),
+       (10,46);
 
 
 UPDATE itemorder
 SET totalprice = (SELECT SUM(price) sumPrice from type inner join itemordertype i on type.id = i.typeid where orderid = 1)
-WHERE id = 1;
+WHERE id = 45;
 
 UPDATE itemorder
 SET totalprice = (SELECT SUM(price) sumPrice from type inner join itemordertype i on type.id = i.typeid where orderid = 2)
-WHERE id = 2;
+WHERE id = 45;
 
 -- Getting a total price
-SELECT totalprice from itemorder  where id = 1;
+SELECT totalprice from itemorder  where id = 45;
 
 --3. Total sales to a customer
-SELECT SUM(totalprice) from itemorder where customerid = 1;
+SELECT SUM(totalprice) from itemorder where customerid = 46;

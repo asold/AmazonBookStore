@@ -144,7 +144,6 @@ create table HardCover
     id              int primary key references Type (id),
     availableCopies int,
     printLength     int,
-
     condition   varchar(20)
 );
 
