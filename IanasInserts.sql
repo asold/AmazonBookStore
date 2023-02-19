@@ -62,41 +62,41 @@ values ('9781338801910', 1),
        ('9788498385489', 1),
        ('9780147515599', 1);
 
-insert into type(bookid, publisher, publishdate, price, condition)
-values ('9780385376716', 'Random House Books for Young Readers', '2015-08-25', 13.4, 'New'),
-       ('9781338801910', 'Graphix', '2023-03-28', 11.58, 'New'),
-       ('9780593486924', 'Random House Studio', '2022-11-29', 9.88, 'New'),
-       ('9780593486924', 'Random House Studio', '2022-11-29', 3.88, 'Used'),
-       ('9788498385489', 'Disney-Hyperion', '2014-06-03', 19.30, 'New'),
-       ('9780147515599', 'Dial Books', '2012-06-13', 12.55, 'Used');
+insert into type(bookid, publisher, publishdate, price)
+values ('9780385376716', 'Random House Books for Young Readers', '2015-08-25', 13.4),
+       ('9781338801910', 'Graphix', '2023-03-28', 11.58),
+       ('9780593486924', 'Random House Studio', '2022-11-29', 9.88),
+       ('9780593486924', 'Random House Studio', '2022-11-29', 3.88),
+       ('9788498385489', 'Disney-Hyperion', '2014-06-03', 19.30),
+       ('9780147515599', 'Dial Books', '2012-06-13', 12.55);
 
-insert into hardcover(id, availablecopies, printlength)
-values (3, 4, 200),
-       (1, 22, 30),
-       (2, 11, 160),
-       (6, 5, 120);
+insert into hardcover(id, availablecopies, printlength, condition)
+values (3, 4, 200, 'Used'),
+       (1, 22, 30, 'New'),
+       (2, 11, 160, 'Used'),
+       (6, 5, 120, 'New');
 
 insert into audiobook(id, listeningtimeminutes, narrator)
-values (6,170,'Adam Rubin'),
+values (6, 170, 'Adam Rubin'),
        (1, 97.1, 'Ari Meyers');
 
 insert into kindle(id, filesize, printlength)
-values (10,1911,40),
-       (11,2067,130);
+values (10, 1911, 40),
+       (11, 2067, 130);
 
-insert into paperback(id, availablecopies, printlength)
-values (5,5,1840);
+insert into paperback(id, availablecopies, printlength, condition)
+values (5, 5, 1840, 'New');
 
 insert into itemorder(orderdate, totalprice, customerid)
-values ('2021-12-23',120.4,2),
-       ('2022-05-04',7.76,1),
-       ('2023-11-30',11.58,3);
+values ('2021-12-23', 120.4, 2),
+       ('2022-05-04', 7.76, 1),
+       ('2023-11-30', 11.58, 3);
 
 insert into itemordertype(typeid, orderid)
-values (4,2),
-       (1,1),
-       (5,1),
-       (2,3);
+values (4, 2),
+       (1, 1),
+       (5, 1),
+       (2, 3);
 
 
 
