@@ -51,31 +51,31 @@ values ('979-8987207215', 1),
        ('0-9546-5295-9', 1);
 
 insert into bookgenre(bookid, genreid)
-values ('979-8987207215', 5),
-       ('0-6312-7348-4', 5),
-       ('978-1250810038', 5),
-       ('0-2043-4052-7', 3),
-       ('0-9546-5295-9', 3);
+values ('979-8987207215', 1),
+       ('0-6312-7348-4', 2),
+       ('978-1250810038', 1),
+       ('0-2043-4052-7', 2),
+       ('0-9546-5295-9', 2);
 
-insert into type(bookid, publisher, publishdate, price, condition)
-values ('979-8987207215', 'Bowker', '2023-01-31', 1.09, null),
-       ('979-8987207215', 'Bowker', '2023-01-31', 14.23, 'New'),
-       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 15.39, null),
-       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 17.95, 'New'),
-       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 16.99, 'Used'),
-       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 13.92, null),
-       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 13.92, 'New'),
-       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 12.71, 'Used'),
-       ('0-2043-4052-7', 'Nakej Franta', '2022-12-06', 10.44, null),
-       ('0-9546-5295-9', 'Gallery/13A', '2023-01-17', 17.25, 'New');
+insert into type(bookid, publisher, publishdate, price)
+values ('979-8987207215', 'Bowker', '2023-01-31', 1.09),
+       ('979-8987207215', 'Bowker', '2023-01-31', 14.23),
+       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 15.39),
+       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 17.95),
+       ('0-6312-7348-4', 'Rodale Books', '2023-02-07', 16.99),
+       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 13.92),
+       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 13.92),
+       ('978-1250810038', 'Roaring Brook Press', '2023-01-10', 12.71),
+       ('0-2043-4052-7', 'Nakej Franta', '2022-12-06', 10.44),
+       ('0-9546-5295-9', 'Gallery/13A', '2023-01-17', 17.25);
 
 
-insert into hardcover(id, availablecopies, printlength)
-values (4, 13, 456),
-       (5, 4, 456),
-       (7, 26, 121),
-       (8, 26, 121),
-       (10,24,222);
+insert into hardcover(id, availablecopies, printlength, condition)
+values (4, 13, 456, 'New'),
+       (5, 4, 456, 'Used'),
+       (7, 26, 121, 'New'),
+       (8, 26, 121, 'Used'),
+       (10,24,222, 'New');
 
 insert into audiobook(id, listeningtimeminutes, narrator)
 values (9, 97.1, 'Franta Dobrej');
@@ -84,8 +84,8 @@ insert into kindle(id, filesize, printlength)
 values (1,2211, 69),
        (6,2167, 121);
 
-insert into paperback(id, availablecopies, printlength)
-values (2, 1, 69);
+insert into paperback(id, availablecopies, printlength, condition)
+values (2, 1, 69, 'New');
 
 insert into itemorder(orderdate, totalprice, customerid)
 values ('2023-02-14',13.8,2),
