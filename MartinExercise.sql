@@ -15,26 +15,13 @@ values ('0-1579-4703-3', 1);
 insert into authorbooks(bookid, authorid, dateposted)
 values ('0-1579-4703-3', 1, '2022-01-31');
 
-insert into type(bookid, publisher, publishdate, price, condition)
-values ('0-1579-4703-3', 'Bowker', '2023-01-31', 15.09, 'New');
+insert into type(bookid, publisher, publishdate, price)
+values ('0-1579-4703-3', 'Bowker', '2023-01-31', 15.09);
 
-insert into hardcover(id, availablecopies, printlength)
-values (11, 150, 256);
+insert into hardcover(id, availablecopies, printlength, condition)
+values (11, 150, 256, 'New');
 
 -- Question 5 - Querying data - 10
-
-
-insert into itemorder(orderdate, totalprice, customerid)
-values ('2023-02-01',50,3),
-       ('2023-01-03',40,2);
-
-insert into itemordertype(typeid, orderid)
-values (15,9),
-       (9,9),
-       (9,9),
-       (9,11),
-       (9,11);
-
 
 
 SELECT b.isbn, b.title, b.description, b.rating,b.language from book b join type t on b.isbn = t.bookid join itemordertype i on t.id = i.typeid group by b.isbn, b.title, b.description, b.rating,b.language order by count(i.typeid)desc limit 10;
